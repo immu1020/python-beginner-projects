@@ -2,6 +2,8 @@ name: Build, Check Artifact, and Upload (Python)
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ main ]
 
 jobs:
   build-python:
