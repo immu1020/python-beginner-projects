@@ -2,52 +2,44 @@ name: Build, Check Artifact, and Upload (Python)
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ] # change if needed
 
 jobs:
   build-python:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout code
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # 2. Set up Python environment
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
 
-      # 3. Install dependencies
       - name: Install dependencies
         run: |
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           else
-            echo "⚠️ No requirements.txt found"
+            echo "No requirements.txt found"
           fi
 
-      # 4. Build package (for libraries) or zip app folder
       - name: Build package
         run: |
           pip install build
           python -m build
 
-      # 5. Verify dist folder exists
       - name: Verify build output
         run: |
           if [ ! -d dist ]; then
-            echo "❌ No dist directory found!"
+            echo "No dist directory found!"
             exit 1
           else
-            echo "✅ dist folder found:"
+            echo "dist folder found:"
             ls -lh dist
           fi
 
-      # 6. Upload Python package artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
