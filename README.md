@@ -1523,7 +1523,7 @@
         <a href="https://github.com/immu1020">
             <img src="https://avatars.githubusercontent.com/u/95666878?v=4" width="100;" alt="immu1020"/>
             <br />
-            <sub><b>immu1020</b></sub>
+            <sub><b>Immu1020</b></sub>
         </a>
     </td></tr>
 <tr>
